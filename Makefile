@@ -5,7 +5,7 @@
 ## makefile
 ##
 
-NAME		=	a.out
+NAME		=	my_ls
 
 LIB_NAME	=	./my_printf/libmy.a
 

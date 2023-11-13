@@ -1,0 +1,15 @@
+flags d'ordre:
+-r
+-t
+flags d'affichage:
+-d
+-l
+flags de tri:
+-a
+flags d'exécution:
+-R
+
+.1 -> flags de tri
+.2 -> flags d'ordre
+.3 -> flags d'affichage
+.4 -> flags d'exécution

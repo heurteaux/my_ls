@@ -6,11 +6,12 @@
 */
 
 #include <dirent.h>
+#include <stdlib.h>
 #include "../../includes/my.h"
 #include "../../includes/internal_functions.h"
-#include <stdlib.h>
 
-void display(struct dirent **fs_item_list, int count, char *args, char *current_dir)
+void display(
+    struct dirent **fs_item_list, int count, char *args, char *current_dir)
 {
     if (is_flag_present(args, 'R')) {
         my_putstr(current_dir);

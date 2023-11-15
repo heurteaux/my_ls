@@ -20,9 +20,6 @@ char *prepare_path_string(char *base_path)
     char *parsed_base_path = malloc(sizeof(char) * len);
     int i = 0;
 
-    for (int n = 0; n < (my_strlen(base_path) + 1); n++) {
-        result[n] = '\0';
-    }
     for (int n = 0; n < len; n++) {
         parsed_base_path[n] = '\0';
     }

@@ -10,10 +10,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/stat.h>
 #include "libmy/my.h"
 #include "includes/data_strucs.h"
 #include "includes/internal_functions.h"
-#include <sys/stat.h>
 
 void my_ls(char *current_dir, char *args)
 {
@@ -48,7 +48,8 @@ void recursive_call(
 {
     char *current_dir_copy;
 
-    if (fs_item_list[i]->d_type == DT_DIR && check_forbiden_dir(fs_item_list[i]->d_name)) {
+    if (fs_item_list[i]->d_type == DT_DIR
+        && check_forbiden_dir(fs_item_list[i]->d_name)) {
         current_dir_copy = get_dir_path(current_dir, fs_item_list, i);
         my_strcat(current_dir_copy, fs_item_list[i]->d_name);
         my_ls(current_dir_copy, args);

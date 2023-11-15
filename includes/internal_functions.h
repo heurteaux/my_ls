@@ -25,9 +25,11 @@ void read_entry_directory(struct dirent *fs_item, struct dirent **fs_item_list,
 
 bool is_flag_present(char *args, char flag);
 
-void display(struct dirent **fs_item_list, int count, char *args, char *current_dir);
+void display(
+    struct dirent **fs_item_list, int count, char *args, char *current_dir);
 
-struct dirent **sort(struct dirent **fs_item_list, char *args, char *base_path);
+struct dirent **sort(
+    struct dirent **fs_item_list, char *args, char *base_path);
 
 void recursive_call(
     struct dirent **fs_item_list, char *current_dir, int i, char *args);

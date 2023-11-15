@@ -116,3 +116,5 @@ int my_str_isupper(char const *str);
 int my_str_isalpha(char const *str);
 
 int my_str_isprintable(char const *str);
+
+void my_strmemset(char *str, int len);

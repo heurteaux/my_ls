@@ -51,7 +51,8 @@ SRCS	=	my_compute_factorial_it.c    \
 		my_str_islower.c	\
 		my_str_isnum.c	\
 		my_str_isprintable.c	\
-		my_str_isupper.c
+		my_str_isupper.c	\
+		my_memset.c	\
 
 OBJS	=	$(SRCS:.c=.o)
 

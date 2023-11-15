@@ -21,7 +21,7 @@ int count_nb_elements(struct dirent **fs_item_list)
     return i;
 }
 
-void sort(struct dirent **fs_item_list, char *args, char *base_path)
+struct dirent **sort(struct dirent **fs_item_list, char *args, char *base_path)
 {
     bool is_sorted = false;
     int nb_elements = count_nb_elements(fs_item_list);
@@ -32,7 +32,7 @@ void sort(struct dirent **fs_item_list, char *args, char *base_path)
     }
     if (!is_sorted)
         default_sort(fs_item_list, nb_elements);
-    if (is_flag_present(args, 'r')) {
-        reverse_array(fs_item_list, nb_elements);
-    }
+    if (is_flag_present(args, 'r'))
+        fs_item_list = reverse_array(fs_item_list, nb_elements);
+    return fs_item_list;
 }

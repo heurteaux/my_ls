@@ -10,9 +10,15 @@
 
 char *my_strdup(char const *src)
 {
-    char *allocated_space = malloc(sizeof(char) * (my_strlen(src) + 1));
+    int len = (my_strlen(src) + 1);
+    char *allocated_space = malloc(sizeof(char) * len);
 
-    my_strcpy(allocated_space, src);
+    for (int i = 0; i < len; i++) {
+        allocated_space[i] = '\0';
+    }
+    for (int i = 0; src[i] != 0; i++) {
+        allocated_space[i] = src[i];
+    }
     return allocated_space;
 }
 

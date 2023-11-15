@@ -14,11 +14,12 @@ LIB			=	my_printf
 SRCS	:=	$(shell find $(SRC_DIRS) -name "*.c" \
 			-not -path "./testroom/*" \
 			-not -name "main_dev.c"	\
+			-not -name "main.c"	\
 			-not -path "./libmy/*")
 
 OBJS	=	$(SRCS:.c=.o)
 
-CFLAGS	=	-Werror -Wall -Wextra
+CFLAGS	=	-Werror -Wall -Wextra -g3
 
 TEST_NAME	=	unit_tests
 
@@ -28,7 +29,7 @@ TESTFLAGS	=	-lcriterion --coverage
 
 $(NAME):	$(OBJS)
 	make -C libmy/lib/my/
-	gcc -o $(NAME) $(OBJS) ./libmy/lib/my/libmy.a
+	gcc -o $(NAME) main.c $(OBJS) ./libmy/lib/my/libmy.a -g3
 
 all: $(NAME)
 
@@ -41,5 +42,5 @@ re: fclean all
 
 dev_test: $(OBJS)
 	make -C libmy/lib/my/
-	gcc main_dev.c $(OBJS) ./libmy/lib/my/libmy.a -g3
+	gcc -o $(NAME) main_dev.c $(OBJS) ./libmy/lib/my/libmy.a -g3
 	make clean

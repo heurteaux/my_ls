@@ -15,10 +15,17 @@
 
 char *prepare_path_string(char *base_path)
 {
-    char *result = malloc(sizeof(char) * my_strlen(base_path));
-    char *parsed_base_path = malloc(sizeof(char) * (my_strlen(base_path) + 1));
+    char *result = malloc(sizeof(char) * (my_strlen(base_path) + 1));
+    int len = (my_strlen(base_path) + 1);
+    char *parsed_base_path = malloc(sizeof(char) * len);
     int i = 0;
 
+    for (int n = 0; n < (my_strlen(base_path) + 10); n++) {
+        result[n] = '\0';
+    }
+    for (int n = 0; n < len; n++) {
+        parsed_base_path[n] = '\0';
+    }
     for (; base_path[i] != '\0'; i++) {
         parsed_base_path[i] = base_path[i];
         if (base_path[i] == '/') {
@@ -61,5 +68,4 @@ void sort_by_date(
     for (int i = 0; i < nb_elements; i++) {
         sort_by_date_iterate(fs_item_list, nb_elements, base_path);
     }
-    reverse_array(fs_item_list, nb_elements);
 }

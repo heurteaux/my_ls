@@ -22,9 +22,9 @@ char *my_revstr(char *str)
 
 /*void main()
 {
-    char str[] = "ijzdijdiedijediejdijfjffn<xxxx";
+    char str[] = "1234";
     printf("%s\n", str);
     char *str_holder = my_revstr(str);
     printf("%s\n", str);
     printf("%s\n", str_holder);
-    }*/
+}*/

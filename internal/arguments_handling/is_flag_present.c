@@ -6,8 +6,9 @@
 */
 
 #include <stdbool.h>
+#include <stdio.h>
 
-bool is_flag_present(char *args, char flag)
+bool is_flag_present(const char *args, char flag)
 {
     for (int i = 0; args[i] != '\0'; i++) {
         if (args[i] == flag)

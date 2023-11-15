@@ -10,9 +10,8 @@
 
 char *my_strlowcase(char *str)
 {
-    char *temp = malloc(sizeof(char) * my_strlen(str));
+    char *temp = my_strdup(str);
 
-    my_strcpy(temp, str);
     for (int i = 0; str[i] != '\0'; i++) {
         if (str[i] > 64 && str[i] < 91) {
             temp[i] += 32;

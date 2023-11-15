@@ -6,15 +6,19 @@
 */
 
 #include <dirent.h>
+#include <stdlib.h>
+#include <stdio.h>
 
-void reverse_array(struct dirent **fs_item_list, int nb_elements)
+struct dirent **reverse_array(struct dirent **fs_item_list, int nb_elements)
 {
-    struct dirent *holder;
-    int len = nb_elements - 1;
+    struct dirent **holder =
+        malloc(sizeof(struct dirent *) * (nb_elements + 1));
+    int count = 0;
 
-    for (int i = 0 ; i < len / 2 ; i++) {
-        holder = fs_item_list[i];
-        fs_item_list[i] = fs_item_list[len - i];
-        fs_item_list[len - i] = holder;
+    for (int i = (nb_elements - 1); i >= 0; i--) {
+        holder[count] = fs_item_list[i];
+        count++;
     }
+    holder[count] = NULL;
+    return holder;
 }

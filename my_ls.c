@@ -13,6 +13,7 @@
 #include "libmy/my.h"
 #include "includes/data_strucs.h"
 #include "includes/internal_functions.h"
+#include <sys/stat.h>
 
 void my_ls(char *current_dir, char *args)
 {
@@ -68,12 +69,20 @@ void arguments_collector(int argc, char **argv)
 {
     char *args = get_args(argc, argv);
     char **path_list = get_path_list(argc, argv);
+    struct stat *temp = malloc(sizeof(struct stat) * 1);
 
     if (path_list[0] == NULL) {
         my_ls(".", args);
         return;
     }
     for (int i = 0; path_list[i] != NULL; i++) {
-        my_ls(path_list[i], args);
+        stat(path_list[i], temp);
+        if (S_ISDIR(temp->st_mode))
+            my_ls(path_list[i], args);
+        else {
+            my_putstr(path_list[i]);
+        }
+        my_putstr("  ");
     }
+    my_putchar('\n');
 }

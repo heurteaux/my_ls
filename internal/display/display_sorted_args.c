@@ -22,5 +22,5 @@ void display(
         if (i < count)
             my_putstr("  ");
     }
-    my_putstr("\n\n");
+    my_putchar('\n');
 }

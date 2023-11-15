@@ -40,7 +40,7 @@ void my_ls(char *current_dir, char *args)
 
 bool check_forbiden_dir(char *dir_name)
 {
-    return (strcmp(dir_name, ".") != 0 && strcmp(dir_name, "..") != 0);
+    return (my_strcmp(dir_name, ".") != 0 && my_strcmp(dir_name, "..") != 0);
 }
 
 void recursive_call(
@@ -50,6 +50,7 @@ void recursive_call(
 
     if (fs_item_list[i]->d_type == DT_DIR
         && check_forbiden_dir(fs_item_list[i]->d_name)) {
+        my_putchar('\n');
         current_dir_copy = get_dir_path(current_dir, fs_item_list, i);
         my_strcat(current_dir_copy, fs_item_list[i]->d_name);
         my_ls(current_dir_copy, args);
@@ -70,20 +71,12 @@ void arguments_collector(int argc, char **argv)
 {
     char *args = get_args(argc, argv);
     char **path_list = get_path_list(argc, argv);
-    struct stat *temp = malloc(sizeof(struct stat) * 1);
 
     if (path_list[0] == NULL) {
         my_ls(".", args);
         return;
     }
     for (int i = 0; path_list[i] != NULL; i++) {
-        stat(path_list[i], temp);
-        if (S_ISDIR(temp->st_mode))
-            my_ls(path_list[i], args);
-        else {
-            my_putstr(path_list[i]);
-        }
-        my_putstr("  ");
+        my_ls(path_list[i], args);
     }
-    my_putchar('\n');
 }

@@ -21,12 +21,10 @@ char *prepare_path_string(char *base_path)
     int i = 0;
 
     my_strmemset(result, (my_strlen(base_path) + 1));
-    for (int n = 0; n < len; n++) {
-        parsed_base_path[n] = '\0';
-    }
+    my_strmemset(parsed_base_path, len);
     for (; base_path[i] != '\0'; i++) {
         parsed_base_path[i] = base_path[i];
-        if (base_path[i] == '/') {
+        if (base_path[i] == '/' && base_path[i - 1] == '/') {
             break;
         }
     }
@@ -43,6 +41,7 @@ static void sort_two_alphabetically(struct dirent **fs_item_list, int i)
     char *lowcase_2 = my_strlowcase(fs_item_list[i + 1]->d_name);
     struct dirent *temp1;
 
+    printf("How did we got here ?\n");
     if (my_strcmp(lowcase_1, lowcase_2) > 0) {
         temp1 = fs_item_list[i];
         fs_item_list[i] = fs_item_list[i + 1];

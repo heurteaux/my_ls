@@ -9,6 +9,7 @@
 #include <dirent.h>
 #include <stdbool.h>
 #include "data_strucs.h"
+#include <sys/stat.h>
 
 #define RECURSIVE_FLAG 'R'
 
@@ -44,3 +45,13 @@ char *path_name_handling(char *path_name);
 char *get_dir_path(char *current_dir, struct dirent **fs_item_list, int i);
 
 bool check_forbiden_dir(char *dir_name);
+
+char *build_fs_item_path(char *current_dir, char *fs_item_name);
+
+char **str_to_date_array(char *str);
+
+char *parse_date(char *str);
+
+void display_variable_len(struct stat *fs_item_stat, struct dirent *fs_item);
+
+void display_constant_len(struct stat *fs_item_stat);

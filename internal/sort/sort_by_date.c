@@ -41,14 +41,13 @@ static void sort_two_alphabetically(struct dirent **fs_item_list, int i)
     char *lowcase_2 = my_strlowcase(fs_item_list[i + 1]->d_name);
     struct dirent *temp1;
 
-    printf("How did we got here ?\n");
     if (my_strcmp(lowcase_1, lowcase_2) > 0) {
         temp1 = fs_item_list[i];
         fs_item_list[i] = fs_item_list[i + 1];
         fs_item_list[i + 1] = temp1;
     }
     free(lowcase_1);
-    free(lowcase_2 );
+    free(lowcase_2);
 }
 
 static void swap_on_tv_sec(struct dirent **fs_item_list, int i)

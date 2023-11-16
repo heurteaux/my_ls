@@ -61,7 +61,7 @@ char **my_str_to_word_array(char const *str)
     }
     array[word_count + 1] = NULL;
     for (int i = 0 ; str[i] != '\0' ; i++) {
-        if (is_alphanum(str[i]) == 1 && !(is_alphanum(str[i - 1]) == 1)) {
+        if (is_alphanum(str[i]) == 1 && (is_alphanum(str[i - 1]) != 1)) {
             array[count] = get_word(&str[i]);
             count++;
         }

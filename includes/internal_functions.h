@@ -8,8 +8,8 @@
 #pragma once
 #include <dirent.h>
 #include <stdbool.h>
-#include "data_strucs.h"
 #include <sys/stat.h>
+#include "data_strucs.h"
 
 #define RECURSIVE_FLAG 'R'
 
@@ -55,3 +55,6 @@ char *parse_date(char *str);
 void display_variable_len(struct stat *fs_item_stat, struct dirent *fs_item);
 
 void display_constant_len(struct stat *fs_item_stat);
+
+void display_total_elements_size(
+    struct dirent **fs_item_list, char *current_dir);

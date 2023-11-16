@@ -22,6 +22,7 @@ void display_long_listing(struct dirent **fs_item_list,
     struct stat fs_item_stat;
     char *fs_item_path;
 
+    display_total_elements_size(fs_item_list, current_dir);
     for (int i = 0; fs_item_list[i] != NULL; i++) {
         fs_item_path =
             build_fs_item_path(current_dir, fs_item_list[i]->d_name);
@@ -46,12 +47,11 @@ void display(struct dirent **fs_item_list, __attribute__((unused)) int count,
     }
     if (is_flag_present(args, 'l')) {
         display_long_listing(fs_item_list, args, current_dir);
+        return;
     }
-    if (!is_flag_present(args, 'l')) {
-        for (int i = 0; fs_item_list[i] != NULL; i++) {
-            my_putstr(fs_item_list[i]->d_name);
-            format_spacing(fs_item_list, i);
-        }
-        my_putchar('\n');
+    for (int i = 0; fs_item_list[i] != NULL; i++) {
+        my_putstr(fs_item_list[i]->d_name);
+        format_spacing(fs_item_list, i);
     }
+    my_putchar('\n');
 }

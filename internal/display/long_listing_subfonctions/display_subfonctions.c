@@ -14,6 +14,7 @@
 #include "../../../includes/my.h"
 #include "../../../includes/internal_file_perms.h"
 #include "../../../includes/internal_functions.h"
+#include <stdio.h>
 
 void display_constant_len(struct stat *fs_item_stat)
 {

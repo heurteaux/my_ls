@@ -15,7 +15,7 @@
 #include "includes/data_strucs.h"
 #include "includes/internal_functions.h"
 
-void my_ls(char *current_dir, char *args)
+static void my_ls(char *current_dir, char *args)
 {
     int count = 0;
     DIR *dir_content = opendir(current_dir);

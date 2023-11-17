@@ -7,11 +7,13 @@
 
 #include "../../includes/my.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 void on_invalid_path(char *current_dir)
 {
-    my_puterr("Invalid path for \"");
-    my_puterr(current_dir);
-    my_puterr("\"");
+    my_putstr("ls: cannot access '");
+    my_putstr(current_dir);
+    my_putstr("' : ");
+    perror(NULL);
     exit(84);
 }

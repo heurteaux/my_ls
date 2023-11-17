@@ -11,9 +11,10 @@
 int count_dir(DIR *dir_to_count)
 {
     int count = 0;
-    struct dirent *temp = readdir(dir_to_count);
+    struct dirent *temp;
 
     if (dir_to_count) {
+        temp = readdir(dir_to_count);
         while (temp != NULL) {
             count++;
             temp = readdir(dir_to_count);

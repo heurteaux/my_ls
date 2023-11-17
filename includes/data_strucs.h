@@ -14,6 +14,11 @@ typedef struct on_switch_reset_t {
     int *element_id;
     char *element;
     char *str;
-    int *i;
+    int *mi;
     int *element_char_id;
 } on_switch_reset_struct;
+
+typedef struct args_path_list_passing_t {
+    char *args;
+    char **path_list;
+} args_path_list_passing;

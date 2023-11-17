@@ -22,7 +22,7 @@ char *get_args(int argc, char **argv);
 char **get_path_list(int argc, char **argv);
 
 void read_entry_directory(struct dirent *fs_item, struct dirent **fs_item_list,
-    int *count, char *args);
+    int *count, args_path_list_passing *args_path_list);
 
 bool is_flag_present(char *args, char flag);
 

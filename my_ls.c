@@ -37,7 +37,6 @@ static struct dirent **build_fs_item_list(DIR **dir_content, int *count,
         malloc(sizeof(struct dirent) * (count_dir(dir_content[1]) + 1));
 
     if (dir_content[0]) {
-        printf("je suis le compilateur et j'aime la merde\n");
         for (int i = 0; fs_item != NULL; i++) {
             read_entry_directory(fs_item, fs_item_list, count, args_path_list);
             fs_item = init_and_readdir(dir_content[0]);

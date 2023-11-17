@@ -48,7 +48,7 @@ void display_variable_len(struct stat *fs_item_stat, struct dirent *fs_item)
     display_gid(fs_item_stat->st_gid);
     my_put_nbr((int) fs_item_stat->st_size);
     my_putchar(' ');
-    my_putstr(str_to_date_array(ctime(&fs_item_stat->st_mtim.tv_sec))[2]);
+    my_putstr(str_to_date_array(ctime(&fs_item_stat->st_mtim.tv_sec) + 4)[2]);
     my_putstr(" ");
     my_putstr(my_strlowcase(
         str_to_date_array(ctime(&fs_item_stat->st_mtim.tv_sec))[1]));

@@ -28,6 +28,8 @@ char *get_permisions_string(struct stat *fs_item_stat)
     get_owner_perms(fs_item_stat, result);
     get_group_perms(fs_item_stat, result);
     get_general_perms(fs_item_stat, result);
+    if (S_ISDIR(fs_item_stat->st_mode) && (fs_item_stat->st_mode & S_ISVTX))
+        result[9] = 't';
     result[10] = '.';
     return result;
 }

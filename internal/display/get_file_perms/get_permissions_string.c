@@ -22,7 +22,7 @@ char *get_permisions_string(struct stat *fs_item_stat)
     if (S_ISREG(fs_item_stat->st_mode))
         result[0] = '-';
     if (S_ISCHR(fs_item_stat->st_mode))
-        result[0] = '-';
+        result[0] = 'c';
     if (S_ISDIR(fs_item_stat->st_mode))
         result[0] = 'd';
     get_owner_perms(fs_item_stat, result);

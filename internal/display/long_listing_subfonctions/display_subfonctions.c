@@ -10,6 +10,7 @@
 #include <pwd.h>
 #include <stdio.h>
 #include <sys/stat.h>
+#include <sys/sysmacros.h>
 #include <sys/types.h>
 #include <time.h>
 #include "../../../includes/my.h"
@@ -42,9 +43,17 @@ void display_gid(__gid_t gid)
     my_putchar(' ');
 }
 
-int epoch_to_year(long int epoch_time)
+static int epoch_to_year(long int epoch_time)
 {
     return epoch_time / 31536000 + 1969;
+}
+
+void handle_chr_dev(struct stat *fs_item_stat)
+{
+    if (S_ISCHR(fs_item_stat->st_mode)) {
+        my_put_nbr(major(fs_item_stat->st_rdev));
+        my_putstr(", ");
+    }
 }
 
 void display_variable_len(struct stat *fs_item_stat, struct dirent *fs_item)
@@ -53,6 +62,7 @@ void display_variable_len(struct stat *fs_item_stat, struct dirent *fs_item)
     display_gid(fs_item_stat->st_gid);
     my_put_nbr((int) fs_item_stat->st_size);
     my_putchar(' ');
+    handle_chr_dev(fs_item_stat);
     my_putstr(str_to_date_array(ctime(&fs_item_stat->st_mtim.tv_sec))[2]);
     my_putstr(" ");
     my_putstr(str_to_date_array(ctime(&fs_item_stat->st_mtim.tv_sec))[1]);

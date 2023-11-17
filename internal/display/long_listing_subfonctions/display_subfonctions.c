@@ -55,9 +55,8 @@ void display_variable_len(struct stat *fs_item_stat, struct dirent *fs_item)
     my_putchar(' ');
     my_putstr(str_to_date_array(ctime(&fs_item_stat->st_mtim.tv_sec))[2]);
     my_putstr(" ");
-    my_putstr(my_strlowcase(
-        str_to_date_array(ctime(&fs_item_stat->st_mtim.tv_sec))[1]));
-    my_putstr(". ");
+    my_putstr(str_to_date_array(ctime(&fs_item_stat->st_mtim.tv_sec))[1]);
+    my_putchar(' ');
     if (epoch_to_year(fs_item_stat->st_mtim.tv_sec)
         == epoch_to_year(time(NULL))) {
         my_putstr(parse_date(

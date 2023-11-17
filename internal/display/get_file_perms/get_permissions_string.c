@@ -12,9 +12,9 @@
 
 char *get_permisions_string(struct stat *fs_item_stat)
 {
-    char *result = malloc(sizeof(char) * 12);
+    char *result = malloc(sizeof(char) * 11);
 
-    my_strmemset(result, 12);
+    my_strmemset(result, 11);
     if (S_ISFIFO(fs_item_stat->st_mode))
         result[0] = '-';
     if (S_ISLNK(fs_item_stat->st_mode))
@@ -29,7 +29,6 @@ char *get_permisions_string(struct stat *fs_item_stat)
     get_group_perms(fs_item_stat, result);
     get_general_perms(fs_item_stat, result);
     if (S_ISDIR(fs_item_stat->st_mode) && (fs_item_stat->st_mode & S_ISVTX))
-        result[9] = 't';
-    result[10] = '.';
+        result[9] = 'T';
     return result;
 }
